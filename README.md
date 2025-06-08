@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# CommUnity
-=======
 # CommUnity - Social Support Platform
 
 CommUnity is a web application designed to empower underserved individuals by connecting them to critical local resources, job opportunities, and language tools — all powered by AI.
@@ -12,6 +9,68 @@ CommUnity is a web application designed to empower underserved individuals by co
 - 🌐 **Language Access Tool**: Real-time translation for non-English speakers
 - 💬 **AI Chat Assistant**: Get guidance and support through an AI-powered chatbot
 - 👥 **Community Posts**: Share and connect with others in the community
+
+## Community Support Resources
+
+### Health Resources
+
+- **Community Clinics**
+  - Free or low-cost primary care services
+  - No insurance required
+  - Walk-in appointments available
+  - Locations: Downtown Medical Center, Westside Health Clinic, Eastside Family Health
+
+- **Mental Health Support**
+  - Free counseling services
+  - Support groups for various needs
+  - Crisis hotline: 24/7 availability
+  - Contact: (555) 123-4567
+
+- **Mobile Health Units**
+  - Weekly visits to underserved neighborhoods
+  - Basic health screenings
+  - Vaccination services
+  - Schedule available on our mobile app
+
+### Housing Assistance
+
+- **Emergency Shelters**
+  - 24/7 access for immediate needs
+  - Basic amenities provided
+  - No pre-registration required
+  - Locations: Central Shelter, Northside Emergency Housing
+
+- **Transitional Housing**
+  - 3-6 month programs
+  - Case management services
+  - Job placement assistance
+  - Application process through our website
+
+- **Affordable Housing Programs**
+  - Income-based rent
+  - Long-term housing solutions
+  - Application assistance available
+  - Contact: Housing Support Line (555) 987-6543
+
+### Free Food Access
+
+- **Food Banks**
+  - Weekly grocery distribution
+  - No ID required
+  - Open: Mon-Fri 9AM-5PM
+  - Locations: Central Food Bank, Community Pantry
+
+- **Soup Kitchens**
+  - Daily hot meals
+  - Open to all
+  - Hours: 11AM-2PM, 5PM-7PM
+  - No registration needed
+
+- **Community Food Pantries**
+  - Monthly food boxes
+  - Basic registration required
+  - Open: Tue-Sat 10AM-4PM
+  - Bring reusable bags if possible
 
 ## Prerequisites
 
@@ -102,4 +161,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Google Maps for location services
 - Google Translate for language support
 - All contributors and supporters of the project 
->>>>>>> b15db1c (First commit — project 5 kickoff)
