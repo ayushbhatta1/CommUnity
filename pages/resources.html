@@ -103,6 +103,15 @@
                             <!-- Training center results will be populated here -->
                         </div>
                     </div>
+
+                    <!-- Clothing Assistance Section -->
+                    <div class="resource-category clothing">
+                        <h3>Clothing Assistance</h3>
+                        <p>Find nearby stores and donation centers like Goodwill to get affordable clothing for you and your family.</p>
+                        <div id="clothing-results" class="resource-list">
+                            <!-- Clothing results will be populated here -->
+                        </div>
+                    </div>
                 </section>
             </div>
         </main>
@@ -137,6 +146,9 @@
     <script src="/js/maps.js"></script>
     <script src="/js/resources.js"></script>
     <script>
+        // Load Google Maps API key from environment variable
+        const googleMapsKey = process.env.VITE_GOOGLE_MAPS_API_KEY || 'YOUR_API_KEY_HERE';
+        
         // Define initMap in the global scope
         window.initMap = function() {
             console.log('Google Maps API loaded, initializing map...');
@@ -157,6 +169,8 @@
         };
     </script>
     <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-FAKEKEY1234567890&callback=initMap">
+    </script>
 </body>
 </html> 

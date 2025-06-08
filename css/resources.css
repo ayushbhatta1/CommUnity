@@ -1,25 +1,40 @@
 .resource-category {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 6px solid #2196F3;
+    background: #f9fbfd;
+    border-radius: 16px;
+    padding: 28px 28px 20px 28px;
+    margin-bottom: 48px;
+    box-shadow: 0 2px 12px rgba(33,150,243,0.06);
+    border-top: 1px solid #e3eaf3;
+    border-right: 1px solid #e3eaf3;
+    border-bottom: 1px solid #e3eaf3;
+    transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
+    position: relative;
 }
 
-.resource-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+.resource-category:nth-child(even) {
+    background: #f3f7fa;
+    border-left: 6px solid #1976D2;
+}
+
+.resource-category:not(:last-child)::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(to right, #e3eaf3 0%, #fff 100%);
+    margin: 36px 0 0 0;
 }
 
 .resource-category h3 {
-    color: #2196F3;
-    margin: 0 0 12px 0;
-    font-size: 1.4rem;
+    color: #1976D2;
+    margin: 0 0 14px 0;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
 }
 
 /* Icon styles for different categories */
@@ -47,16 +62,23 @@
     content: "💼";
 }
 
+/* Clothing icon */
+.resource-category.clothing h3::before {
+    content: "👕";
+    font-size: 1.6rem;
+}
+
 .resource-category p {
-    color: #666;
-    margin: 0 0 16px 0;
-    line-height: 1.5;
+    color: #4a4a4a;
+    margin: 0 0 18px 0;
+    line-height: 1.6;
+    font-size: 1.08rem;
 }
 
 .resource-list {
     display: grid;
-    gap: 16px;
-    margin-top: 16px;
+    gap: 18px;
+    margin-top: 10px;
 }
 
 .resource-item {

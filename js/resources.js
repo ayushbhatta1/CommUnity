@@ -71,6 +71,24 @@ const resourceData = {
             services: ["Vocational Training", "Certification Programs"],
             distance: "2.0 miles"
         }
+    ],
+    clothing: [
+        {
+            name: "Goodwill Store",
+            address: "111 Charity Ave, City, State",
+            phone: "(555) 111-2222",
+            hours: "Mon-Sat: 9AM-7PM",
+            services: ["Affordable Clothing", "Donations Accepted"],
+            distance: "1.4 miles"
+        },
+        {
+            name: "Community Thrift Shop",
+            address: "222 Hope St, City, State",
+            phone: "(555) 333-4444",
+            hours: "Mon-Fri: 10AM-6PM",
+            services: ["Clothing", "Shoes", "Accessories"],
+            distance: "2.1 miles"
+        }
     ]
 };
 
@@ -123,6 +141,12 @@ function populateResources() {
     const trainingContainer = document.getElementById('training-results');
     resourceData.training.forEach(resource => {
         trainingContainer.appendChild(createResourceItem(resource));
+    });
+
+    // Populate Clothing Assistance
+    const clothingContainer = document.getElementById('clothing-results');
+    resourceData.clothing.forEach(resource => {
+        clothingContainer.appendChild(createResourceItem(resource));
     });
 }
 
