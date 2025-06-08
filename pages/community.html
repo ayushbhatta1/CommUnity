@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - CommUnity</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#2196F3">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <div class="nav-brand">
+                <img src="../assets/logo.svg" alt="CommUnity Logo" class="logo">
+                <h1>CommUnity</h1>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Community</h1>
+                <p>Connect with others and share your experiences</p>
+            </div>
+
+            <div class="community-container">
+                <!-- Community Posts -->
+                <section class="posts-section">
+                    <div class="post-actions">
+                        <button class="create-post-btn">Create Post</button>
+                        <div class="post-filters">
+                            <select id="post-category">
+                                <option value="">All Categories</option>
+                                <option value="events">Events</option>
+                                <option value="questions">Questions</option>
+                                <option value="resources">Resources</option>
+                                <option value="stories">Stories</option>
+                            </select>
+                            <select id="post-sort">
+                                <option value="recent">Most Recent</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="posts-list" class="posts-list">
+                        <!-- Posts will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Chat Section -->
+                <section class="chat-section">
+                    <div class="chat-header">
+                        <h2>Community Chat</h2>
+                        <div class="chat-actions">
+                            <button class="language-select">
+                                <span class="current-lang">English</span>
+                                <span class="icon">🌐</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chat-container">
+                        <div id="chat-messages" class="chat-messages">
+                            <!-- Chat messages will be populated here -->
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="message-input" placeholder="Type your message...">
+                            <button id="send-message">Send</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="/" class="nav-item" data-page="home">
+                <span class="icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="/pages/resources.html" class="nav-item" data-page="resources">
+                <span class="icon">🔍</span>
+                <span>Resources</span>
+            </a>
+            <a href="/pages/jobs.html" class="nav-item" data-page="jobs">
+                <span class="icon">💼</span>
+                <span>Jobs</span>
+            </a>
+            <a href="/pages/community.html" class="nav-item active" data-page="community">
+                <span class="icon">👥</span>
+                <span>Community</span>
+            </a>
+            <a href="/pages/profile.html" class="nav-item" data-page="profile">
+                <span class="icon">👤</span>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/chat.js"></script>
+    <script src="../js/translate.js"></script>
+</body>
+</html> 
