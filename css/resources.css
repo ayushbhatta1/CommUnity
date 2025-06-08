@@ -4,6 +4,13 @@
     padding: 20px;
     margin-bottom: 24px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.resource-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .resource-category h3 {
@@ -13,6 +20,31 @@
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+/* Icon styles for different categories */
+.resource-category h3::before {
+    font-size: 1.6rem;
+}
+
+/* Food Bank icon */
+.resource-category.food-banks h3::before {
+    content: "🍖";
+}
+
+/* Housing icon */
+.resource-category.housing h3::before {
+    content: "🏠";
+}
+
+/* Health Center icon */
+.resource-category.health h3::before {
+    content: "🏥";
+}
+
+/* Training Center icon */
+.resource-category.training h3::before {
+    content: "💼";
 }
 
 .resource-category p {
