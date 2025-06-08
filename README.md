@@ -33,6 +33,10 @@ Discover job training programs and skill development workshops to help improve e
   - Google Maps  
   - OpenAI  
   - Google Translate  
+pictures:
+<img width="1000" alt="Image" src="https://github.com/user-attachments/assets/870463cb-f611-4054-bc57-badae5c51b2a" />
+
+<img width="1002" alt="Image" src="https://github.com/user-attachments/assets/ecdc62a9-507a-43b0-b466-137d8a150916" />
 
 ## Setup
 
