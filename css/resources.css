@@ -1,1 +1,150 @@
- 
+.resource-category {
+    border-left: 6px solid #2196F3;
+    background: #f9fbfd;
+    border-radius: 16px;
+    padding: 28px 28px 20px 28px;
+    margin-bottom: 48px;
+    box-shadow: 0 2px 12px rgba(33,150,243,0.06);
+    border-top: 1px solid #e3eaf3;
+    border-right: 1px solid #e3eaf3;
+    border-bottom: 1px solid #e3eaf3;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.resource-category:nth-child(even) {
+    background: #f3f7fa;
+    border-left: 6px solid #1976D2;
+}
+
+.resource-category:not(:last-child)::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(to right, #e3eaf3 0%, #fff 100%);
+    margin: 36px 0 0 0;
+}
+
+.resource-category h3 {
+    color: #1976D2;
+    margin: 0 0 14px 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+/* Icon styles for different categories */
+.resource-category h3::before {
+    font-size: 1.6rem;
+}
+
+/* Food Bank icon */
+.resource-category.food-banks h3::before {
+    content: "🍖";
+}
+
+/* Housing icon */
+.resource-category.housing h3::before {
+    content: "🏠";
+}
+
+/* Health Center icon */
+.resource-category.health h3::before {
+    content: "🏥";
+}
+
+/* Training Center icon */
+.resource-category.training h3::before {
+    content: "💼";
+}
+
+/* Clothing icon */
+.resource-category.clothing h3::before {
+    content: "👕";
+    font-size: 1.6rem;
+}
+
+.resource-category p {
+    color: #4a4a4a;
+    margin: 0 0 18px 0;
+    line-height: 1.6;
+    font-size: 1.08rem;
+}
+
+.resource-list {
+    display: grid;
+    gap: 18px;
+    margin-top: 10px;
+}
+
+.resource-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s ease;
+}
+
+.resource-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.resource-item h4 {
+    margin: 0 0 8px 0;
+    color: #333;
+}
+
+.resource-item p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.resource-item .details {
+    margin-top: 12px;
+    display: flex;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.resource-item .details span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.resource-item .actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.resource-item .actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background: #2196F3;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.resource-item .actions button:hover {
+    background: #1976D2;
+}
+
+.resource-item .actions button.secondary {
+    background: #e9ecef;
+    color: #333;
+}
+
+.resource-item .actions button.secondary:hover {
+    background: #dee2e6;
+} 

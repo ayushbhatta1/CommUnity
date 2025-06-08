@@ -66,9 +66,51 @@
 
                 <!-- Results Section -->
                 <section class="results-section">
-                    <h2>Nearby Resources</h2>
-                    <div id="resource-results" class="resource-list">
-                        <!-- Results will be populated here -->
+                    <h2>Community Support Resources</h2>
+                    
+                    <!-- Food Banks Section -->
+                    <div class="resource-category food-banks">
+                        <h3>🍖 Food Banks</h3>
+                        <p>Access free food supplies through local food banks and community pantries. These organizations offer groceries and meals to those in need and often require minimal registration.</p>
+                        <div id="food-bank-results" class="resource-list">
+                            <!-- Food bank results will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Housing Assistance Section -->
+                    <div class="resource-category housing">
+                        <h3>🏠 Housing Assistance</h3>
+                        <p>Find emergency shelters, transitional housing, and affordable housing programs designed to support individuals facing housing insecurity.</p>
+                        <div id="housing-results" class="resource-list">
+                            <!-- Housing results will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Community Health Centers Section -->
+                    <div class="resource-category health">
+                        <h3>🏥 Community Health Centers</h3>
+                        <p>Receive basic healthcare, preventative services, and mental health support at community health centers offering low-cost or free care.</p>
+                        <div id="health-results" class="resource-list">
+                            <!-- Health center results will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Job Training Centers Section -->
+                    <div class="resource-category training">
+                        <h3>💼 Job Training Centers</h3>
+                        <p>Discover job training programs and skill development workshops to help improve employment opportunities.</p>
+                        <div id="training-results" class="resource-list">
+                            <!-- Training center results will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Clothing Assistance Section -->
+                    <div class="resource-category clothing">
+                        <h3>Clothing Assistance</h3>
+                        <p>Find nearby stores and donation centers like Goodwill to get affordable clothing for you and your family.</p>
+                        <div id="clothing-results" class="resource-list">
+                            <!-- Clothing results will be populated here -->
+                        </div>
                     </div>
                 </section>
             </div>
@@ -102,7 +144,11 @@
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <script src="/js/maps.js"></script>
+    <script src="/js/resources.js"></script>
     <script>
+        // Load Google Maps API key from environment variable
+        const googleMapsKey = process.env.VITE_GOOGLE_MAPS_API_KEY || 'YOUR_API_KEY_HERE';
+        
         // Define initMap in the global scope
         window.initMap = function() {
             console.log('Google Maps API loaded, initializing map...');
@@ -123,6 +169,8 @@
         };
     </script>
     <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-FAKEKEY1234567890&callback=initMap">
+    </script>
 </body>
 </html> 
