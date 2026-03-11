@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - CommUnity</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="main-nav" aria-label="Primary navigation">
+            <div class="nav-brand">
+                <img src="/assets/logo.svg" alt="CommUnity Logo" class="logo">
+                <h1>CommUnity</h1>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-content">
+            <div class="page-header">
+                <h1>Job Recommendations</h1>
+                <p>Find opportunities that match your skills and experience</p>
+            </div>
+
+            <div class="jobs-container">
+                <!-- Profile Section -->
+                <section class="profile-section" aria-label="Your job profile">
+                    <h2>Your Profile</h2>
+                    <div class="profile-form">
+                        <div class="form-group">
+                            <label for="skills">Skills</label>
+                            <input type="text" id="skills" placeholder="Enter your skills (comma-separated)">
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Experience Level</label>
+                            <select id="experience">
+                                <option value="entry">Entry Level</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="senior">Senior</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="preferred-location">Preferred Location</label>
+                            <input type="text" id="preferred-location" placeholder="Enter city or region">
+                        </div>
+                        <button class="update-profile-btn">Update Profile</button>
+                    </div>
+                </section>
+
+                <!-- Job Listings -->
+                <section class="job-listings" aria-label="Job listings">
+                    <h2>Recommended Jobs</h2>
+                    <div class="job-filters">
+                        <label for="job-type" class="sr-only">Job type</label>
+                        <select id="job-type" aria-label="Filter by job type">
+                            <option value="">All Types</option>
+                            <option value="full-time">Full Time</option>
+                            <option value="part-time">Part Time</option>
+                            <option value="contract">Contract</option>
+                            <option value="internship">Internship</option>
+                        </select>
+                        <label for="sort-by" class="sr-only">Sort by</label>
+                        <select id="sort-by" aria-label="Sort jobs by">
+                            <option value="relevance">Most Relevant</option>
+                            <option value="recent">Most Recent</option>
+                            <option value="salary">Highest Salary</option>
+                        </select>
+                    </div>
+                    <div id="job-results" class="job-list" role="list" aria-label="Job results">
+                        <!-- Job listings will be populated here -->
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav" aria-label="Main navigation">
+            <a href="/" class="nav-item" data-page="home">
+                <span class="icon" aria-hidden="true">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="/pages/resources.html" class="nav-item" data-page="resources">
+                <span class="icon" aria-hidden="true">🔍</span>
+                <span>Resources</span>
+            </a>
+            <a href="/pages/jobs.html" class="nav-item active" data-page="jobs" aria-current="page">
+                <span class="icon" aria-hidden="true">💼</span>
+                <span>Jobs</span>
+            </a>
+            <a href="/pages/community.html" class="nav-item" data-page="community">
+                <span class="icon" aria-hidden="true">👥</span>
+                <span>Community</span>
+            </a>
+            <a href="/pages/profile.html" class="nav-item" data-page="profile">
+                <span class="icon" aria-hidden="true">👤</span>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/jobs.js"></script>
+</body>
+</html>

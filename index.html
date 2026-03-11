@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommUnity - Supporting Underserved Communities</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <!-- Fallback for browsers that don't support SVG favicons -->
+    <link rel="alternate icon" type="image/png" href="/assets/favicon.png">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="main-nav" aria-label="Primary navigation">
+            <div class="nav-brand">
+                <img src="/assets/logo.svg" alt="CommUnity Logo" class="logo">
+                <h1>CommUnity</h1>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-content">
+            <div class="hero-section">
+                <h1>Welcome to CommUnity</h1>
+                <p>Supporting underserved individuals and building stronger communities together</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Food Assistance Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">🍖</div>
+                    <h2>Food Assistance</h2>
+                    <p>Find local food banks and pantries to access free groceries and meals.</p>
+                    <a href="/pages/resources.html#food-bank-results" class="feature-link">See Food Resources</a>
+                </div>
+
+                <!-- Housing Assistance Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h2>Housing Assistance</h2>
+                    <p>Apply for low-income housing and find support for housing needs.</p>
+                    <a href="/pages/resources.html#housing-results" class="feature-link">Apply for Housing</a>
+                </div>
+
+                <!-- Health Services Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h2>Health Services</h2>
+                    <p>Find nearby clinics, hospitals, and make appointments.</p>
+                    <a href="/pages/resources.html#health-results" class="feature-link">See Health Resources</a>
+                </div>
+
+                <!-- Clothing Assistance Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">👕</div>
+                    <h2>Clothing Assistance</h2>
+                    <p>Find nearby stores and donation centers like Goodwill to get affordable clothing.</p>
+                    <a href="/pages/resources.html#clothing-results" class="feature-link">See Clothing Resources</a>
+                </div>
+
+                <!-- Job & Training Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h2>Job & Training</h2>
+                    <p>Discover job opportunities and skill development programs near you.</p>
+                    <a href="/pages/resources.html#training-results" class="feature-link">See Jobs & Training</a>
+                </div>
+
+                <!-- Chat Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h2>Chat</h2>
+                    <p>Connect with others and share your experiences</p>
+                    <a href="/pages/community.html" class="feature-link">Join Chat</a>
+                </div>
+
+                <!-- Translation Assistant Card -->
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h2>Translation Assistant</h2>
+                    <p>Get real-time translation support in multiple languages</p>
+                    <a href="/pages/community.html#chat" class="feature-link">Start Chat</a>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-buttons">
+                    <a href="/pages/resources.html" class="action-btn">
+                        <span class="icon">🔍</span>
+                        Find Resources
+                    </a>
+                    <a href="/pages/jobs.html" class="action-btn">
+                        <span class="icon">💼</span>
+                        Browse Jobs
+                    </a>
+                    <a href="/pages/community.html" class="action-btn">
+                        <span class="icon">👥</span>
+                        Join Community
+                    </a>
+                    <a href="/pages/profile.html" class="action-btn">
+                        <span class="icon">👤</span>
+                        View Profile
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav" aria-label="Main navigation">
+            <a href="/" class="nav-item active" data-page="home" aria-current="page">
+                <span class="icon" aria-hidden="true">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="/pages/resources.html" class="nav-item" data-page="resources">
+                <span class="icon">🔍</span>
+                <span>Resources</span>
+            </a>
+            <a href="/pages/jobs.html" class="nav-item" data-page="jobs">
+                <span class="icon">💼</span>
+                <span>Jobs</span>
+            </a>
+            <a href="/pages/community.html" class="nav-item" data-page="community">
+                <span class="icon">👥</span>
+                <span>Community</span>
+            </a>
+            <a href="/pages/profile.html" class="nav-item" data-page="profile">
+                <span class="icon">👤</span>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

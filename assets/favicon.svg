@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="16" cy="16" r="16" fill="#2196F3"/>
+    
+    <!-- Community Icon -->
+    <path d="M16 8C13.79 8 12 9.79 12 12C12 14.21 13.79 16 16 16C18.21 16 20 14.21 20 12C20 9.79 18.21 8 16 8ZM16 14C14.9 14 14 13.1 14 12C14 10.9 14.9 10 16 10C17.1 10 18 10.9 18 12C18 13.1 17.1 14 16 14Z" fill="white"/>
+    <path d="M24 20C24 17.79 22.21 16 20 16H12C9.79 16 8 17.79 8 20V22H24V20ZM10 20C10 18.9 10.9 18 12 18H20C21.1 18 22 18.9 22 20H10Z" fill="white"/>
+</svg> 

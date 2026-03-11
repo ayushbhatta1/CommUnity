@@ -1,0 +1,200 @@
+/* Resource Category Cards */
+.resource-category {
+    border-left: 6px solid var(--primary-color);
+    background: #f9fbfd;
+    border-radius: 16px;
+    padding: 28px 28px 20px 28px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(37,99,235,0.06);
+    border-top: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.resource-category:nth-child(even) {
+    background: #f3f7fa;
+    border-left-color: var(--primary-dark);
+}
+
+.resource-category h3 {
+    color: var(--primary-dark);
+    margin: 0 0 10px 0;
+    font-size: 1.35rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.resource-category > p {
+    color: var(--text-light);
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Hide empty categories */
+.resource-category:has(.resource-list:empty) {
+    display: none;
+}
+
+/* Resource List Grid */
+.resource-list {
+    display: grid;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+/* Individual Resource Items */
+.resource-item {
+    background: var(--card-background);
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-light);
+}
+
+.resource-item h4 {
+    margin: 0 0 6px 0;
+    color: var(--text-color);
+    font-size: 1.05rem;
+}
+
+.resource-item > p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.88rem;
+}
+
+.resource-item .details {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 0.82rem;
+    color: var(--text-light);
+}
+
+.resource-item .details span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Service Tags */
+.resource-item .services {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.service-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+/* Action Buttons */
+.resource-item .actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.resource-item .actions button {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 6px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.resource-item .actions button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.resource-item .actions button.secondary {
+    background: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.resource-item .actions button.secondary:hover {
+    background: var(--border-color);
+    transform: translateY(-1px);
+}
+
+/* Load More Button */
+.load-more-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    background: var(--background-color);
+    color: var(--primary-color);
+    border: 2px dashed var(--primary-light);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.load-more-btn:hover {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: var(--primary-color);
+    transform: none;
+}
+
+/* Loading skeleton for resource categories */
+.resource-category .loading-placeholder {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.resource-category .loading-placeholder::after {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .resource-category {
+        padding: 20px 16px 16px 16px;
+        margin-bottom: 24px;
+    }
+
+    .resource-item .details {
+        flex-direction: column;
+        gap: 6px;
+    }
+}

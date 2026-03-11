@@ -1,0 +1,27 @@
+{
+    "name": "CommUnity",
+    "short_name": "CommUnity",
+    "description": "A community support platform connecting underserved individuals to local resources",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2196F3",
+    "icons": [
+        {
+            "src": "/assets/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/assets/logo.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "orientation": "portrait",
+    "categories": ["social", "utilities"],
+    "lang": "en",
+    "dir": "ltr",
+    "prefer_related_applications": false
+}
