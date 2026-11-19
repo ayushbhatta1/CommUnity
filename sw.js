@@ -1,4 +1,4 @@
-const CACHE_NAME = 'community-v3';
+const CACHE_NAME = 'community-v4';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -51,41 +51,36 @@ self.addEventListener('activate', (event) => {
 
 // Fetch Event
 self.addEventListener('fetch', (event) => {
-    // Skip API requests — always go to network
-    if (event.request.url.includes('/api/')) {
+    const request = event.request;
+    const url = new URL(request.url);
+
+    // Only same-origin GETs are cached. API calls, POSTs and third-party
+    // requests (map tiles, CDNs) go straight to the network.
+    if (request.method !== 'GET' || url.origin !== self.location.origin || url.pathname.startsWith('/api/')) {
         return;
     }
 
+    // Network first, cache as the offline fallback. The old cache-first
+    // strategy kept serving the first JS/CSS a visitor ever downloaded until
+    // CACHE_NAME was bumped by hand, so fixes never reached returning users.
     event.respondWith(
-        caches.match(event.request)
+        fetch(request)
             .then((response) => {
-                if (response) {
-                    return response;
+                if (response && response.status === 200 && response.type === 'basic') {
+                    const copy = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
                 }
-
-                const fetchRequest = event.request.clone();
-
-                return fetch(fetchRequest).then(
-                    (response) => {
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        const responseToCache = response.clone();
-
-                        caches.open(CACHE_NAME)
-                            .then((cache) => {
-                                cache.put(event.request, responseToCache);
-                            });
-
-                        return response;
-                    }
-                );
+                return response;
             })
+            .catch(() => caches.match(request).then((cached) => {
+                if (cached) return cached;
+                // Offline page load: fall back to the cached app shell
+                if (request.mode === 'navigate') return caches.match('/index.html');
+                return Response.error();
+            }))
     );
 });
 
-// Background Sync
 self.addEventListener('sync', (event) => {
     if (event.tag === 'sync-posts') {
         event.waitUntil(syncPosts());
@@ -95,7 +90,7 @@ self.addEventListener('sync', (event) => {
 // Push Notifications
 self.addEventListener('push', (event) => {
     const options = {
-        body: event.data.text(),
+        body: event.data ? event.data.text() : 'You have a new update.',
         icon: '/assets/logo.svg',
         vibrate: [100, 50, 100],
         data: {
