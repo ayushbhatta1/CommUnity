@@ -145,8 +145,8 @@ function createResourceItem(resource) {
             ${services.map(service => `<span class="service-tag">${escapeHTML(service)}</span>`).join('')}
         </div>` : ''}
         <div class="actions">
-            <button onclick="openDirections('${escapeHTML(resource.address)}')">Get Directions</button>
-            <button class="secondary" onclick="bookmarkResource('${escapeHTML(resource.name)}')">Save</button>
+            <button onclick="openDirections(${escapeHTML(JSON.stringify(String(resource.address || '')))})">Get Directions</button>
+            <button class="secondary" onclick="bookmarkResource(${escapeHTML(JSON.stringify(String(resource.name || '')))})">Save</button>
         </div>
     `;
 

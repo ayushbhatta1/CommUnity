@@ -200,7 +200,7 @@ function createPopupContent(resource) {
                     display:inline-block; padding:6px 12px; background:#2563eb;
                     color:#fff; border-radius:4px; text-decoration:none; font-size:13px;
                 ">Get Directions</a>
-                <button onclick="mapsSaveResource('${escapeHTML(resource.id)}')">Save</button>
+                <button onclick="mapsSaveResource(${escapeHTML(JSON.stringify(String(resource.id)))})">Save</button>
             </div>
         </div>
     `;

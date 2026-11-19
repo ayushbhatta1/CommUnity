@@ -89,6 +89,8 @@ function buildServices(tags, type) {
 // Simple in-memory cache: key → { data, timestamp }
 const overpassCache = new Map();
 const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+const CACHE_MAX_ENTRIES = 500;
+const OVERPASS_TIMEOUT_MS = 30 * 1000;
 
 async function queryOverpass(lat, lng, radiusMeters) {
     // Round coords to ~100m grid to increase cache hits
@@ -127,30 +129,66 @@ async function queryOverpass(lat, lng, radiusMeters) {
     const response = await fetch(OVERPASS_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `data=${encodeURIComponent(query)}`
+        body: `data=${encodeURIComponent(query)}`,
+        // Overpass can hang; give up before the browser does and fall back to mock data
+        signal: AbortSignal.timeout(OVERPASS_TIMEOUT_MS)
     });
 
     if (!response.ok) throw new Error(`Overpass API error: ${response.status}`);
     const data = await response.json();
     const elements = data.elements || [];
 
+    // Keep the cache bounded so a stream of different coordinates can't grow memory forever
+    if (overpassCache.size >= CACHE_MAX_ENTRIES) {
+        overpassCache.delete(overpassCache.keys().next().value);
+    }
     overpassCache.set(cacheKey, { data: elements, timestamp: Date.now() });
     return elements;
 }
 
 // --- API Routes ---
+
+// Search radius in metres: default 8 km, never below 500 m or above 32 km
+function clampRadius(radius) {
+    const r = Number(radius);
+    if (!Number.isFinite(r) || r <= 0) return 8000;
+    return Math.round(Math.min(Math.max(r, 500), 32000));
+}
+
+// Turn "$80,000 - $100,000" or "$25 per hour" into a yearly figure so the two can be compared
+function annualSalary(salary) {
+    const match = String(salary || '').replace(/,/g, '').match(/\d+(\.\d+)?/);
+    if (!match) return 0;
+    const value = parseFloat(match[0]);
+    return /hour|hr/i.test(salary) ? value * 2080 : value;
+}
+
+const MAX_TEXT_LENGTH = 2000;
+function tooLong(...values) {
+    return values.some(v => typeof v !== 'string' || v.length > MAX_TEXT_LENGTH);
+}
 const mockData = require('./data/mockData');
 
 // GET /api/resources
 app.get('/api/resources', async (req, res) => {
     const { lat, lng, radius, type } = req.query;
 
+    const latNum = Number(lat);
+    const lngNum = Number(lng);
+    const hasLocation = lat !== undefined && lng !== undefined &&
+        Number.isFinite(latNum) && Number.isFinite(lngNum) &&
+        Math.abs(latNum) <= 90 && Math.abs(lngNum) <= 180;
+
+    if ((lat !== undefined || lng !== undefined) && !hasLocation) {
+        return res.status(400).json({ error: 'lat and lng must be valid coordinates' });
+    }
+
     // If location provided, query Overpass for real data
-    if (lat && lng) {
+    if (hasLocation) {
         try {
-            const radiusMeters = Math.min(Number(radius) || 8000, 32000);
-            const elements = await queryOverpass(Number(lat), Number(lng), radiusMeters);
-            let results = elements.map(el => osmToResource(el, Number(lat), Number(lng))).filter(Boolean);
+            const radiusMeters = clampRadius(radius);
+            const elements = await queryOverpass(latNum, lngNum, radiusMeters);
+            let results = elements.map(el => osmToResource(el, latNum, lngNum)).filter(Boolean);
             if (type) results = results.filter(r => r.type === type);
             results.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
             console.log(`Overpass returned ${results.length} resources near ${lat},${lng}`);
@@ -175,11 +213,7 @@ app.get('/api/jobs', (req, res) => {
     if (req.query.sort === 'recent') {
         results.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
     } else if (req.query.sort === 'salary') {
-        results.sort((a, b) => {
-            const salaryA = parseInt(a.salary.replace(/[^0-9]/g, ''));
-            const salaryB = parseInt(b.salary.replace(/[^0-9]/g, ''));
-            return salaryB - salaryA;
-        });
+        results.sort((a, b) => annualSalary(b.salary) - annualSalary(a.salary));
     }
     res.json(results);
 });
@@ -194,6 +228,9 @@ app.post('/api/posts', (req, res) => {
     const { author, content } = req.body;
     if (!author || !content) {
         return res.status(400).json({ error: 'author and content are required' });
+    }
+    if (tooLong(author, content)) {
+        return res.status(400).json({ error: `author and content must be text under ${MAX_TEXT_LENGTH} characters` });
     }
     const newPost = {
         id: Date.now().toString(),
@@ -217,6 +254,9 @@ app.post('/api/messages', (req, res) => {
     const { userId, userName, content } = req.body;
     if (!userId || !userName || !content) {
         return res.status(400).json({ error: 'userId, userName, and content are required' });
+    }
+    if (tooLong(String(userId), userName, content)) {
+        return res.status(400).json({ error: `userName and content must be text under ${MAX_TEXT_LENGTH} characters` });
     }
     const newMessage = {
         id: Date.now().toString(),
@@ -257,10 +297,11 @@ app.put('/api/user/profile', (req, res) => {
 
 // Handle page routes
 app.get('/pages/:page', (req, res) => {
-    const page = req.params.page;
-    const filePath = path.join(__dirname, 'pages', page);
+    // Express decodes %2F in params, so "/pages/..%2Fserver.js" would otherwise escape the folder
+    const pagesDir = path.join(__dirname, 'pages');
+    const filePath = path.resolve(pagesDir, req.params.page);
 
-    if (fs.existsSync(filePath)) {
+    if (path.dirname(filePath) === pagesDir && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
         res.sendFile(filePath);
     } else {
         res.status(404).send('Page not found');
@@ -293,7 +334,11 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Start server (skipped when required by tests)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = { app, annualSalary, clampRadius, classifyOsmElement, osmToResource };
