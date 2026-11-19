@@ -167,6 +167,14 @@ CommUnity/
 | `GET` | `/api/user/profile` | Get user profile |
 | `PUT` | `/api/user/profile` | Update user profile |
 
+### Running the Tests
+
+```bash
+npm test
+```
+
+The tests use Node's built-in test runner (Node 18 or newer) and cover the API's input checks, the salary sort and the `/pages/` route. They run on every push in GitHub Actions.
+
 ### Building for Production
 
 1. Build the application:
